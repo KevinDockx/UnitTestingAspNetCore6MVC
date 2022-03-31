@@ -8,9 +8,11 @@ namespace EmployeeManagement.Business
         event EventHandler<EmployeeIsAbsentEventArgs>? EmployeeIsAbsent;
         Task AddInternalEmployeeAsync(InternalEmployee internalEmployee);
         Task AttendCourseAsync(InternalEmployee employee, Course attendedCourse);
-        ExternalEmployee CreateExternalEmployee(string firstName, string lastName, string company);
+        ExternalEmployee CreateExternalEmployee(string firstName, 
+            string lastName, string company);
         InternalEmployee CreateInternalEmployee(string firstName, string lastName);
-        Task<InternalEmployee> CreateInternalEmployeeAsync(string firstName, string lastName);
+        Task<InternalEmployee> CreateInternalEmployeeAsync(string firstName, 
+            string lastName);
         InternalEmployee? FetchInternalEmployee(Guid employeeId);
         Task<InternalEmployee?> FetchInternalEmployeeAsync(Guid employeeId);
         Task<IEnumerable<InternalEmployee>> FetchInternalEmployeesAsync();

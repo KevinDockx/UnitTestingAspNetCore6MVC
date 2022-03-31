@@ -15,9 +15,11 @@ namespace EmployeeManagement.Controllers
             _mapper = mapper;
         }
 
+        [CheckShowStatisticsHeader]
         public IActionResult Index()
         {
-            var httpConnectionFeature = HttpContext.Features.Get<IHttpConnectionFeature>();
+            var httpConnectionFeature = HttpContext.Features
+                .Get<IHttpConnectionFeature>();
             return View(_mapper.Map<StatisticsViewModel>(httpConnectionFeature)); 
         }
     }

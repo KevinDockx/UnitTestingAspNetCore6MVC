@@ -64,7 +64,7 @@ namespace EmployeeManagement.Business
                 throw new EmployeeInvalidRaiseException(
                     "Invalid raise: raise must be higher than or equal to 100.", raise);
                 //throw new Exception(
-                //  "Invalid raise: raise must be higher than or equal to 100."); 
+                //  "Invalid raise: raise must be higher than or equal to 100.");
             }
 
             // if minimum raise was previously given, the raise must 
@@ -128,7 +128,8 @@ namespace EmployeeManagement.Business
             string firstName, string lastName)
         {
             // use the factory to create the object 
-            var employee = (InternalEmployee)_employeeFactory.CreateEmployee(firstName, lastName);
+            var employee = (InternalEmployee)_employeeFactory
+                .CreateEmployee(firstName, lastName);
 
             // apply business logic 
 
@@ -153,7 +154,8 @@ namespace EmployeeManagement.Business
            string firstName, string lastName)
         {
             // use the factory to create the object 
-            var employee = (InternalEmployee)_employeeFactory.CreateEmployee(firstName, lastName);
+            var employee = (InternalEmployee)_employeeFactory.CreateEmployee(
+                firstName, lastName);
 
             // apply business logic 
        
@@ -161,7 +163,8 @@ namespace EmployeeManagement.Business
             // during vetting process
 
             // get those courses  
-            var obligatoryCourses = await _repository.GetCoursesAsync(_obligatoryCourseIds);
+            var obligatoryCourses = await _repository.GetCoursesAsync(
+                _obligatoryCourseIds);
 
             // add them for this employee
             foreach (var obligatoryCourse in obligatoryCourses)

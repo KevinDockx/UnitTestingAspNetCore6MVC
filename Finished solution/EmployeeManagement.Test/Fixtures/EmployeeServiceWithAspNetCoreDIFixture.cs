@@ -2,17 +2,12 @@
 using EmployeeManagement.DataAccess.Services;
 using EmployeeManagement.Services.Test;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeManagement.Test.Fixtures
 {
     public class EmployeeServiceWithAspNetCoreDIFixture : IDisposable
     {
-        private ServiceProvider _serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
 
         public IEmployeeManagementRepository EmployeeManagementTestDataRepository
         {
@@ -22,7 +17,7 @@ namespace EmployeeManagement.Test.Fixtures
                 return _serviceProvider.GetService<IEmployeeManagementRepository>();
 #pragma warning restore CS8603 // Possible null reference return.
             }
-        } 
+        }
 
         public IEmployeeService EmployeeService
         {
@@ -34,12 +29,13 @@ namespace EmployeeManagement.Test.Fixtures
             }
         }
 
+
         public EmployeeServiceWithAspNetCoreDIFixture()
         {
             var services = new ServiceCollection();
-
             services.AddScoped<EmployeeFactory>();
-            services.AddScoped<IEmployeeManagementRepository, EmployeeManagementTestDataRepository>();
+            services.AddScoped<IEmployeeManagementRepository, 
+                EmployeeManagementTestDataRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
 
             // build provider

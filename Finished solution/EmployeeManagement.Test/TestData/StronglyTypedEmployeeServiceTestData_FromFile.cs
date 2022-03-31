@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+﻿using Xunit;
 
 namespace EmployeeManagement.Test.TestData
 {
-    public class StronglyTypedEmployeeServiceTestData_FromFile : TheoryData<int, bool>
+    public class StronglyTypedEmployeeServiceTestData_FromFile : TheoryData<int,bool>
     {
         public StronglyTypedEmployeeServiceTestData_FromFile()
         {
             var testDataLines = File.ReadAllLines("TestData/EmployeeServiceTestData.csv");
-
+         
             foreach (var line in testDataLines)
             {
                 // split the string

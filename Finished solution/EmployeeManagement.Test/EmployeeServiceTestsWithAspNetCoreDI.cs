@@ -3,17 +3,17 @@ using Xunit;
 
 namespace EmployeeManagement.Test
 {
-    public class EmployeeServiceTestsWithAspNetCoreDI 
+    public class EmployeeServiceTestsWithAspNetCoreDI
         : IClassFixture<EmployeeServiceWithAspNetCoreDIFixture>
     {
-        private readonly EmployeeServiceWithAspNetCoreDIFixture _employeeServiceFixture;
+        private readonly EmployeeServiceWithAspNetCoreDIFixture 
+            _employeeServiceFixture;
 
         public EmployeeServiceTestsWithAspNetCoreDI(
             EmployeeServiceWithAspNetCoreDIFixture employeeServiceFixture)
         {
             _employeeServiceFixture = employeeServiceFixture;
         }
-
 
         [Fact]
         public void CreateInternalEmployee_InternalEmployeeCreated_MustHaveAttendedFirstObligatoryCourse_WithObject()

@@ -23,7 +23,8 @@ namespace EmployeeManagement.Business
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
-        public async Task<bool> PromoteInternalEmployeeAsync(InternalEmployee employee)
+        public async Task<bool> PromoteInternalEmployeeAsync(
+            InternalEmployee employee)
         {
             if (await CheckIfInternalEmployeeIsEligibleForPromotion(employee.Id))
             {

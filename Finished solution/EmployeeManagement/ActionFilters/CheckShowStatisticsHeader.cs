@@ -9,7 +9,8 @@ namespace EmployeeManagement.ActionFilters
         {
             // if the ShowStatistics header is missing or set to false, 
             // a BadRequest must be returned.
-                 if (!context.HttpContext.Request.Headers.ContainsKey("ShowStatistics"))
+                 if (!context.HttpContext.Request.Headers
+                .ContainsKey("ShowStatistics"))
             {
                 context.Result = new BadRequestResult();
             }

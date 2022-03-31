@@ -1,7 +1,6 @@
 ﻿using EmployeeManagement.DataAccess.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Moq;
 using Xunit;
 
 namespace EmployeeManagement.Test
@@ -22,12 +21,13 @@ namespace EmployeeManagement.Test
             // Act
             serviceCollection.RegisterDataServices(configuration);
             var serviceProvider = serviceCollection.BuildServiceProvider();
-       
+
             // Assert
             Assert.NotNull(
                 serviceProvider.GetService<IEmployeeManagementRepository>());
             Assert.IsType<EmployeeManagementRepository>(
                 serviceProvider.GetService<IEmployeeManagementRepository>());
+
         }
     }
 }

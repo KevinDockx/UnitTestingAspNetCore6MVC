@@ -1,5 +1,5 @@
 ﻿using EmployeeManagement.Business;
-using EmployeeManagement.DataAccess.Entities;
+using EmployeeManagement.DataAccess.Entities; 
 using Xunit;
 
 namespace EmployeeManagement.Test
@@ -16,40 +16,34 @@ namespace EmployeeManagement.Test
 
         public void Dispose()
         {
-            // clean up the setup code, if required
+           // clean up the setup code, if required
         }
+
 
         [Fact(Skip = "Skipping this one for demo reasons.")]
         [Trait("Category", "EmployeeFactory_CreateEmployee_Salary")]
         public void CreateEmployee_ConstructInternalEmployee_SalaryMustBe2500()
         {
-            var employee = (InternalEmployee)_employeeFactory.CreateEmployee("Kevin", "Dockx");
+            
+            var employee = (InternalEmployee)_employeeFactory
+                .CreateEmployee("Kevin", "Dockx");
 
-            Assert.Equal(2500, employee.Salary);
-        }
-
-        [Fact]
-        [Trait("Category", "EmployeeFactory_CreateEmployee_Salary")]
-        public void CreateEmployee_ConstructInternalEmployee_SalaryMustBe2500_PrecisionExample()
-        {
-            // Arrange 
-
-            // Act 
-            var employee = (InternalEmployee)_employeeFactory.CreateEmployee("Kevin", "Dockx");
-            employee.Salary = 2500.123m;
-
-            // Assert
             Assert.Equal(2500, employee.Salary);
         }
 
         [Fact]
         [Trait("Category", "EmployeeFactory_CreateEmployee_Salary")]
         public void CreateEmployee_ConstructInternalEmployee_SalaryMustBeBetween2500And3500()
-        { 
+        {
+            // Arrange 
 
-            var employee = (InternalEmployee)_employeeFactory.CreateEmployee("Kevin", "Dockx"); 
+            // Act
+            var employee = (InternalEmployee)_employeeFactory
+                .CreateEmployee("Kevin", "Dockx");
 
-            Assert.True(employee.Salary >= 2500 && employee.Salary <= 3500, "Salary not in acceptable range.");
+            // Assert
+            Assert.True(employee.Salary >= 3000 && employee.Salary <= 3500, 
+                "Salary not in acceptable range.");
         }
 
         [Fact]
@@ -59,13 +53,13 @@ namespace EmployeeManagement.Test
             // Arrange 
 
             // Act
-            var employee = (InternalEmployee)_employeeFactory.CreateEmployee("Kevin", "Dockx");
+            var employee = (InternalEmployee)_employeeFactory
+                .CreateEmployee("Kevin", "Dockx");
 
             // Assert
             Assert.True(employee.Salary >= 2500);
             Assert.True(employee.Salary <= 3500);
         }
-
 
         [Fact]
         [Trait("Category", "EmployeeFactory_CreateEmployee_Salary")]
@@ -74,21 +68,41 @@ namespace EmployeeManagement.Test
             // Arrange 
 
             // Act
-            var employee = (InternalEmployee)_employeeFactory.CreateEmployee("Kevin", "Dockx");
+            var employee = (InternalEmployee)_employeeFactory
+                .CreateEmployee("Kevin", "Dockx");
 
             // Assert
             Assert.InRange(employee.Salary, 2500, 3500);
         }
 
+        [Fact]
+        [Trait("Category", "EmployeeFactory_CreateEmployee_Salary")]
+        public void CreateEmployee_ConstructInternalEmployee_SalaryMustBe2500_PrecisionExample()
+        {
+            // Arrange 
 
+            // Act
+            var employee = (InternalEmployee)_employeeFactory
+                .CreateEmployee("Kevin", "Dockx");
+            employee.Salary = 2500.123m;
+
+            // Assert
+            Assert.Equal(2500, employee.Salary, 0);
+        }
 
         [Fact]
         [Trait("Category", "EmployeeFactory_CreateEmployee_ReturnType")]
         public void CreateEmployee_IsExternalIsTrue_ReturnTypeMustBeExternalEmployee()
-        { 
-            var employee = _employeeFactory.CreateEmployee("Kevin", "Dockx", "Marvin", true);
+        {
+            // Arrange 
 
-            Assert.IsType<ExternalEmployee>(employee); 
+            // Act
+            var employee = _employeeFactory
+                .CreateEmployee("Kevin", "Dockx", "Marvin", true);
+
+            // Assert
+            Assert.IsType<ExternalEmployee>(employee);
+            //Assert.IsAssignableFrom<Employee>(employee);
         }
 
         [Fact]
@@ -97,17 +111,7 @@ namespace EmployeeManagement.Test
             Thread.Sleep(5000);
             Assert.True(true);
         }
- 
-    }
 
-    [Collection("No parallelism")]
-    public class AnotherTestClass
-    {
-        [Fact]
-        public void SlowTest2()
-        {
-            Thread.Sleep(5000);
-            Assert.True(true);
-        }
+      
     }
 }
